@@ -1,6 +1,6 @@
 from data.users import User
 
-def check_user(username: str) -> User:
+def find_user(username: str) -> User:
     user = User.objects(username = username).first()
     return user
 
