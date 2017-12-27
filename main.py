@@ -14,22 +14,40 @@ def main():
 def show_menu():
     print(40*'*')
     if state.logged_in:
-        print('You are logged in')
-    print('Menu :')
-    print('[1] Login')
-    print('[2] Register')
-    print('[0] Exit')
-    menu = input('Pilih menu : ')
-    if menu in ['0', 'exit', 'exit()']:
-        print('Bye...')
-        raise KeyboardInterrupt
-    elif menu == '1':
-        login()
-    elif menu == '2':
-        register()
+        print('Menu : ')
+        print('[1] Show list')
+        print('[2] Add list')
+        print('[3] Logout')
+        print('[0] Exit')
+        menu = input('Select menu : ')
+        if menu in ['0', 'exit', 'exit()']:
+            print('Bye...')
+            raise KeyboardInterrupt
+        elif menu == '1':
+            show_list()
+        elif menu == '2':
+            add_list()
+        elif menu == '3':
+            logout()
+        else:
+            print(40*'*')
+            print('Unknown Command')
     else:
-        print(40*'*')
-        print('Perintah tidak dikenali')
+        print('Menu :')
+        print('[1] Login')
+        print('[2] Register')
+        print('[0] Exit')
+        menu = input('Select menu : ')
+        if menu in ['0', 'exit', 'exit()']:
+            print('Bye...')
+            raise KeyboardInterrupt
+        elif menu == '1':
+            login()
+        elif menu == '2':
+            register()
+        else:
+            print(40*'*')
+            print('Unknown Command')
 
 def register():
     print(40*'*')
@@ -62,6 +80,21 @@ def login():
     state.logged_in = user
     print(40*'*')
     print('Login successfully')
+
+def logout():
+    print(40*'*')
+    print('Not Implemented')
+    return
+
+def show_list():
+    print(40*'*')
+    print('Not Implemented')
+    return
+
+def add_list():
+    print(40*'*')
+    print('Not Implemented')
+    return
 
 # -----------------------------------------------
 
