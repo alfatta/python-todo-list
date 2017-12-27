@@ -82,8 +82,9 @@ def login():
     print('Login successfully')
 
 def logout():
+    state.logged_in = None
     print(40*'*')
-    print('Not Implemented')
+    print('Logout successfully')
     return
 
 def show_list():
