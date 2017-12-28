@@ -1,3 +1,4 @@
+from dateutil import parser
 import data.connection as connection
 import data.models     as models
 import state
@@ -82,21 +83,38 @@ def login():
     print('Login successfully')
 
 def logout():
-    state.logged_in = None
     print(40*'*')
+    if not state.logged_in:
+        print('You must login first')
+        return
+    state.logged_in = None
     print('Logout successfully')
     return
 
 def show_list():
     print(40*'*')
-    print('Not Implemented')
+    if not state.logged_in:
+        print('You must login first')
+        return
+    todos = models.find_todos(state.logged_in)
+    print(f'You have {len(todos)} todos :')
+    for idx, t in enumerate(todos):
+        print(f' {idx+1}. {t.date} - {t.activity}')
     return
 
 def add_list():
     print(40*'*')
-    print('Not Implemented')
+    if not state.logged_in:
+        print('You must login first')
+        return
+    date     = parser.parse(input('When : '))
+    activity = input('Todo : ')
+    todo     = models.create_todo(state.logged_in, date, activity)
+    print(40*'*')
+    print('Successfully added')
+    state.refresh_user()
     return
-
+ 
 # -----------------------------------------------
 
 if __name__ == '__main__':

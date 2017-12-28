@@ -6,6 +6,8 @@ class User(db.Document):
     username   = db.StringField(required = True)
     password   = db.StringField(required = True)
 
+    todo_ids   = db.ListField()
+
     meta       = {
         'db_alias'  : 'core',
         'collection': 'users'
